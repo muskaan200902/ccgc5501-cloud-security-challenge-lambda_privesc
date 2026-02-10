@@ -1,4 +1,5 @@
 To find the flag, I’ve taken the following steps:
+
 •Step 1: Environment Setup
   I started by cloning and deploying the lab environment using Terraform. This created the required IAM users, roles, and Lambda-related resources. 
   -git clone https://github.com/humbercloudsecurity/ccgc5501-cloud-security-challenge-lambda_privesc
