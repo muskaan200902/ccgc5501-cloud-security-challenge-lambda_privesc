@@ -44,21 +44,30 @@ To find the flag, I’ve taken the following steps:
 REFLECTION
 
 Question 1: What was your approach?
+
 ~ I started by setting up the lab environment and verifying my initial permissions. I then looked for roles that could be abused and found a Lambda-related role with elevated privileges. By assuming that role, I was able to create and execute a Lambda function that escalated my access.
 
 Question 2: What was the biggest challenge?
+
 ~ The biggest challenge was troubleshooting why the Lambda function was failing even though the permissions appeared correct. The issue turned out to be a username mismatch, where the Lambda code referenced chris instead of the actual IAM user chris-lambda_privesc.
 
 Question 3: How did you overcome the challenge?
+
 ~ I reviewed the IAM commands and outputs carefully and compared them with the Lambda code. By identifying the correct IAM username used in the lab environment, I updated the Lambda function accordingly. This fix allowed the privilege escalation to succeed.
 
 Question 4: What led to the breakthrough?
+
 ~ The breakthrough happened when the Lambda function successfully attached the AdministratorAccess policy to the chris user, confirming that the privilege escalation worked.
 
 Question 5: On the blue side, how can this learning be used to properly defend important assets?
+
 ~ This challenge highlights the risks of overly permissive roles and Lambda access. To defend important assets:
+
   -Apply least privilege to IAM roles
+  
   -Restrict who can create or invoke Lambda functions
+  
   -Monitor role assumptions using CloudTrail
+  
   -Regularly audit IAM policies and role trust relationships
 
